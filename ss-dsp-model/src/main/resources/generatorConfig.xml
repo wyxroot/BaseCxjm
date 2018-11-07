@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- MVN -Dmybatis.generator.overwrite=true mybatis-generator:generate -->
+<generatorConfiguration>
+	<!-- 修改为你本地的数据库jar地址 -->
+	<classPathEntry
+		location="E:\dev\apache-maven-3.5.4\repo\com\oracle\ojdbc6\11.2.0.1.0\ojdbc6-11.2.0.1.0.jar" />
+
+	<!-- 数据库连接地址 -->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<!-- 是否覆盖原来的代码 -->
+		<property name="mergeable" value="false"/>
+		<!-- 增加Models ToStirng方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<!-- 增加爱Models Serializable实现 -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<!-- 分页插件 -->
+		<plugin type="org.mybatis.generator.plugins.MysqlPaginationPlugin"></plugin>
+
+		<!--数据库表注释生成 -->
+		<commentGenerator
+			type="org.mybatis.generator.internal.CustomeCommentGenerator">
+			<property name="javaFileEncoding" value="UTF-8" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+			<property name="suppressDate" value="false" />
+		</commentGenerator>
+
+
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@58.62.207.50:10210:ORCL" userId="DB_SBFSJJHPT"
+			password="DB_SBFSJJHPT">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- generate Model -->
+		<javaModelGenerator targetPackage="com.foresee.ss.dsp.auto.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- generate xml -->
+		<sqlMapGenerator targetPackage="com.foresee.ss.dsp.auto.dao"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- generate Mapper -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.foresee.ss.dsp.auto.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="" tableName="T_SFZJ_CXJMGRCBXX" domainObjectName="SfzjCxjmgrcbxx"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
+		</table>
+		<table schema="" tableName="T_SFZJ_CXJMGRCBXX" domainObjectName="SfzjCxjmgrcbxx"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
+		</table>
+		<table schema="" tableName="T_SFZJ_CXJMGRJCXX" domainObjectName="SfzjCxjmgrjcxx"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
+		</table>
+		<table schema="" tableName="T_SFZJ_CXJMXNHJCXX" domainObjectName="SfzjCxjmxnhjcxx"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
+		</table>
+		<table schema="" tableName="T_SFZJ_CXJMYZXX" domainObjectName="SfzjCxjmyzxx"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
+		</table>
+	</context>
+</generatorConfiguration>

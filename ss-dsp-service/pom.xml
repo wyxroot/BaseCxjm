@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ss-dsp-service</artifactId>
+    <name>ss-dsp-service</name>
+    <url>http://maven.apache.org</url>
+    <description>服务层</description>
+    <packaging>jar</packaging>
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+    <parent>
+        <groupId>com.foresee.ss</groupId>
+        <artifactId>ss-dsp</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <!-- 依赖包，根据实际需求添加 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.foresee.ss</groupId>
+            <artifactId>ss-dsp-model</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.foresee.ss</groupId>
+            <artifactId>ss-dsp-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

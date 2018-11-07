@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.foresee.ss</groupId>
+	<artifactId>ss-dsp</artifactId>
+	<version>0.0.1</version>
+	<name>ss-dsp</name>
+	<url>http://maven.apache.org</url>
+	<description>???</description>
+	<packaging>pom</packaging>
+  <parent>
+    <groupId>com.foresee.icap</groupId>
+    <artifactId>icap-parent</artifactId>
+    <version>0.0.1</version>
+  </parent>
+	<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.foresee.icap</groupId>
+				<artifactId>icap-framework-starter-all</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+	</dependencies>
+
+  <modules>
+    <module>ss-dsp-model</module>
+    <module>ss-dsp-service</module>
+    <module>ss-dsp-rest</module>
+    <module>ss-dsp-api</module>
+  </modules>
+</project>
