@@ -3,6 +3,8 @@ package com.foresee.ss.dsp.auto.dao;
 import com.foresee.ss.dsp.auto.dto.CbxxProcdure;
 import com.foresee.ss.dsp.auto.model.SfzjCxjmyzxx;
 
+import java.util.List;
+
 public interface SfzjCxjmyzxxMapper {
     /**
      * 根据主键删除数据库的记录
@@ -51,4 +53,10 @@ public interface SfzjCxjmyzxxMapper {
      * @param sfzjCxjmyzxx
      */
     void procedure(SfzjCxjmyzxx sfzjCxjmyzxx);
+
+    /**
+     * 批量新增数据
+     * @param insertList
+     */
+    void batchInsert(List<SfzjCxjmyzxx> insertList);
 }

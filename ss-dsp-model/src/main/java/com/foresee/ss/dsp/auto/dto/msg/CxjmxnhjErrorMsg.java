@@ -12,12 +12,12 @@ public class CxjmxnhjErrorMsg<T> {
     /**
      * 异常状态码
      */
-    private String returnCode;
+    private String errorCode;
 
     /**
-     * 异常信息
+     * 错误信息
      */
-    private String returnMsg;
+    private String errorMsg;
 
     /**
      * 异常数据
@@ -44,25 +44,20 @@ public class CxjmxnhjErrorMsg<T> {
      */
     private String sbjbjgDm;
 
-    /**
-     * 错误信息
-     */
-    private String errorMsg;
-
-    public String getReturnCode() {
-        return returnCode;
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setReturnCode(String returnCode) {
-        this.returnCode = returnCode;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public String getReturnMsg() {
-        return returnMsg;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setReturnMsg(String returnMsg) {
-        this.returnMsg = returnMsg;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     public T getFkxx() {
@@ -103,13 +98,5 @@ public class CxjmxnhjErrorMsg<T> {
 
     public void setSbjbjgDm(String sbjbjgDm) {
         this.sbjbjgDm = sbjbjgDm;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
     }
 }

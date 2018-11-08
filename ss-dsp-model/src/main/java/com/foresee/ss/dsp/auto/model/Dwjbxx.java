@@ -69,7 +69,7 @@ public class Dwjbxx implements Serializable {
     /**
      * 生成日期
      */
-    private String sc_rq;
+    private String scRq;
 
     /**
      * 数据来源类型
@@ -167,12 +167,12 @@ public class Dwjbxx implements Serializable {
         this.jls = jls;
     }
 
-    public String getSc_rq() {
-        return sc_rq;
+    public String getScRq() {
+        return scRq;
     }
 
-    public void setSc_rq(String sc_rq) {
-        this.sc_rq = sc_rq;
+    public void setScRq(String scRq) {
+        this.scRq = scRq;
     }
 
     public String getSjlylx() {
@@ -197,7 +197,7 @@ public class Dwjbxx implements Serializable {
                 ", qyxysh='" + qyxysh + '\'' +
                 ", qyys='" + qyys + '\'' +
                 ", jls='" + jls + '\'' +
-                ", sc_rq='" + sc_rq + '\'' +
+                ", scRq='" + scRq + '\'' +
                 ", sjlylx='" + sjlylx + '\'' +
                 '}';
     }

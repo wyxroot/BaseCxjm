@@ -9,7 +9,7 @@
         <!-- 各应用按实际情况自行定义相关类的输出级别 -->
         <AsyncLogger name="com.foresee" level="DEBUG" />
 		<AsyncLogger name="com.foresee.fcap.common" level="INFO" />
-		<AsyncLogger name="com.ibatis" level="INFO"/>
+		<AsyncLogger name="com.ibatis" level="DEBUG"/>
 		<AsyncLogger name="java.sql" level="DEBUG"/>
 	    <AsyncRoot  level="INFO" includeLocation="true">
 	      <AppenderRef ref="Console"/>

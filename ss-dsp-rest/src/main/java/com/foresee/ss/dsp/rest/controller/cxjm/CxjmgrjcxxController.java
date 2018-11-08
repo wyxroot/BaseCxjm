@@ -21,13 +21,13 @@ import com.foresee.ss.dsp.service.cxjm.CxjmgrjcxxService;
  */
 @RestController
 @RequestMapping("/v1/personalInfo/")
-public class CxjmgrjcxxController extends BaseController<SfzjCxjmgrjcxx,BaseDto> {
+public class CxjmgrjcxxController extends BaseController<SfzjCxjmgrjcxx> {
 
     @Autowired
     private CxjmgrjcxxService cxjmgrjcxxService;
 
     @PostMapping("/saveOrUpdate")
-    public Response saveOrUpdate(@RequestBody CxjmxxVO<SfzjCxjmgrjcxx, BaseDto> cxjmgrcbxxVO){
+    public Response saveOrUpdate(@RequestBody CxjmxxVO<SfzjCxjmgrjcxx> cxjmgrcbxxVO){
        return super.saveOrUpdate(cxjmgrcbxxVO);
     }
 }

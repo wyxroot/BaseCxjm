@@ -29,7 +29,7 @@ public interface CxjmxnhjcxxService {
      * @param updateDwjbxxGrid
      * @param resultVO
      */
-    List<CxjmxnhjErrorMsg> checkAndUpdate(List<CxjmxnhjccDto> updateDwjbxxGrid, ResultVO resultVO);
+    List<CxjmxnhjErrorMsg> checkAndUpdate(List<SfzjCxjmxnhjcxx> updateDwjbxxGrid, ResultVO resultVO);
 
     /**
      * 效验并删除数据, resultVO 用于封装错误数据的结果集

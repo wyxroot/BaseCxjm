@@ -386,4 +386,34 @@
         )
       }
   </select>
+
+
+  <insert id="batchInsert" parameterType="java.util.List" >
+    insert into T_SFZJ_CXJMYZXX (XH, SJLYLX, SBJBJG_DM,
+    SB_YZ_XH, SB_YZMX_XH, GRBH,
+    GRBH_SW, DWBH, DWBH_SW,
+    XZLX_DM, YJJE, SFSSQ_QSRQ,
+    SFSSQ_ZZRQ, JK_QX, YHHB_DM,
+    YH_ZHKHM, YH_ZH, ZHBH,
+    QYXYSH, BDLX_DM, DR_SJ,
+    DQ_SJ, DQJGLX_DM, BZ,
+    CSPCH, FQNY)
+    (
+    <foreach collection="list" index="" item="sfzjCxjmyzxx"
+             separator="union all">
+      select
+      #{sfzjCxjmyzxx.xh,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.sjlylx,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.sbjbjgDm,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.sbYzXh,jdbcType=DECIMAL}, #{sfzjCxjmyzxx.sbYzmxXh,jdbcType=DECIMAL}, #{sfzjCxjmyzxx.grbh,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.grbhSw,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.dwbh,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.dwbhSw,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.xzlxDm,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.yjje,jdbcType=DECIMAL}, #{sfzjCxjmyzxx.sfssqQsrq,jdbcType=TIMESTAMP},
+      #{sfzjCxjmyzxx.sfssqZzrq,jdbcType=TIMESTAMP}, #{sfzjCxjmyzxx.jkQx,jdbcType=TIMESTAMP}, #{sfzjCxjmyzxx.yhhbDm,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.yhZhkhm,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.yhZh,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.zhbh,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.qyxysh,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.bdlxDm,jdbcType=VARCHAR}, #{sfzjCxjmyzxx.drSj,jdbcType=TIMESTAMP},
+      #{sfzjCxjmyzxx.dqSj,jdbcType=TIMESTAMP}, #{sfzjCxjmyzxx.dqjglxDm,jdbcType=CHAR}, #{sfzjCxjmyzxx.bz,jdbcType=VARCHAR},
+      #{sfzjCxjmyzxx.cspch,jdbcType=DECIMAL}, #{sfzjCxjmyzxx.fqny,jdbcType=DECIMAL}
+
+      from dual
+    </foreach>
+    )
+  </insert>
 </mapper>

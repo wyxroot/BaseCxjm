@@ -13,12 +13,12 @@ public class CxjmgeyzMsg{
     /**
      * 接口返回码
      */
-    private String returnCode;
+    private String errorCode;
 
     /**
-     * 接口返回消息
+     * 错误信息
      */
-    private String returnMsg;
+    private String errorMsg;
 
     /**
      *  序号
@@ -60,25 +60,13 @@ public class CxjmgeyzMsg{
      */
     private String yjje;
 
-    /**
-     * 错误信息
-     */
-    private String errorMsg;
 
-    public String getReturnCode() {
-        return returnCode;
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setReturnCode(String returnCode) {
-        this.returnCode = returnCode;
-    }
-
-    public String getReturnMsg() {
-        return returnMsg;
-    }
-
-    public void setReturnMsg(String returnMsg) {
-        this.returnMsg = returnMsg;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
     public String getXh() {

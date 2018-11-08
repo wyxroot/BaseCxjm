@@ -65,30 +65,33 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table schema="" tableName="T_SFZJ_CXJMGRCBXX" domainObjectName="SfzjCxjmgrcbxx"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
-		</table>
-		<table schema="" tableName="T_SFZJ_CXJMGRCBXX" domainObjectName="SfzjCxjmgrcbxx"
-			   enableCountByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" enableSelectByExample="false"
-			   selectByExampleQueryId="false">
-			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
-		</table>
-		<table schema="" tableName="T_SFZJ_CXJMGRJCXX" domainObjectName="SfzjCxjmgrjcxx"
-			   enableCountByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" enableSelectByExample="false"
-			   selectByExampleQueryId="false">
-			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
-		</table>
-		<table schema="" tableName="T_SFZJ_CXJMXNHJCXX" domainObjectName="SfzjCxjmxnhjcxx"
-			   enableCountByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" enableSelectByExample="false"
-			   selectByExampleQueryId="false">
-			<!--<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>-->
-		</table>
+
+		<!--<table schema="" tableName="T_SFZJ_CXJMGRCBXX" domainObjectName="SfzjCxjmgrcbxx"-->
+			   <!--enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+			   <!--selectByExampleQueryId="false">-->
+			<!--&lt;!&ndash;<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>&ndash;&gt;-->
+		<!--</table>-->
+		<!--<table schema="" tableName="T_SFZJ_CXJMGRJCXX" domainObjectName="SfzjCxjmgrjcxx"-->
+			   <!--enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+			   <!--selectByExampleQueryId="false">-->
+			<!--&lt;!&ndash;<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>&ndash;&gt;-->
+		<!--</table>-->
+		<!--<table schema="" tableName="T_SFZJ_CXJMXNHJCXX" domainObjectName="SfzjCxjmxnhjcxx"-->
+			   <!--enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+			   <!--selectByExampleQueryId="false">-->
+			<!--&lt;!&ndash;<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>&ndash;&gt;-->
+		<!--</table>-->
+		<!--<table schema="" tableName="T_SFZJ_CXJMYZXX" domainObjectName="SfzjCxjmyzxx"-->
+			   <!--enableCountByExample="false" enableUpdateByExample="false"-->
+			   <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+			   <!--selectByExampleQueryId="false">-->
+			<!--&lt;!&ndash;<generatedKey  type="pre"  column="id" sqlStatement="select T_DEMO_TEST_SEQ.nextval from dual"></generatedKey>&ndash;&gt;-->
+		<!--</table>-->
+
+
 		<table schema="" tableName="T_SFZJ_CXJMYZXX" domainObjectName="SfzjCxjmyzxx"
 			   enableCountByExample="false" enableUpdateByExample="false"
 			   enableDeleteByExample="false" enableSelectByExample="false"

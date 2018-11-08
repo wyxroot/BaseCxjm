@@ -16,7 +16,7 @@ import java.lang.reflect.Type;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-03 15:40
  */
-public class RefDemo extends BaseServiceImpl<SfzjCxjmgrcbxx, BaseDto> {
+public class RefDemo extends BaseServiceImpl<SfzjCxjmgrcbxx> {
 
     @Override
     public String checkMyParam(SfzjCxjmgrcbxx param) {

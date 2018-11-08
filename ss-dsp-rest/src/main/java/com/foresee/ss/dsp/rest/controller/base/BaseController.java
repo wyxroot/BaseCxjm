@@ -3,7 +3,6 @@ package com.foresee.ss.dsp.rest.controller.base;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.foresee.icap.framework.entity.api.Response;
-import com.foresee.ss.dsp.auto.base.dto.BaseDto;
 import com.foresee.ss.dsp.auto.base.model.BaseModel;
 import com.foresee.ss.dsp.auto.dto.msg.CxjmgrxxErrorMsg;
 import com.foresee.ss.dsp.auto.vo.CxjmxxVO;
@@ -17,13 +16,13 @@ import com.foresee.ss.dsp.service.base.BaseService;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-03 16:17
  */
-public class BaseController<T extends BaseModel,Dto extends BaseDto> {
+public class BaseController<T extends BaseModel> {
 
     @Autowired
-    private BaseService<T,Dto> baseService;
+    private BaseService<T> baseService;
 
 
-    public Response saveOrUpdate(CxjmxxVO<T ,Dto> cxjmgrcbxxVO){
+    public Response saveOrUpdate(CxjmxxVO<T> cxjmgrcbxxVO){
         ResultVO errorResult = new ResultVO();
 
         /**
@@ -39,7 +38,7 @@ public class BaseController<T extends BaseModel,Dto extends BaseDto> {
         /**
          * check and update
          */
-        List<Dto> dtoList = cxjmgrcbxxVO.getUpdateGrjbxxGrid();
+        List<T> dtoList = cxjmgrcbxxVO.getUpdateGrjbxxGrid();
         if (dtoList != null && dtoList.size() != 0){
             List<CxjmgrxxErrorMsg> updateErrList = baseService.checkAndUpdate(dtoList);
             errorResult.setUpdateMsg(updateErrList);

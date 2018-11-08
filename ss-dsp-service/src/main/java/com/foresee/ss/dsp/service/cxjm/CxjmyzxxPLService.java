@@ -19,4 +19,12 @@ public interface CxjmyzxxPLService {
      * @param cxjmyzPLVO
      */
     List<CxjmgeyzPLMsg> checkAndSave(CxjmyzPLVO<SfzjCxjmyzxx> cxjmyzPLVO);
+
+
+    /**
+     * save error data
+     * @param cspch
+     * @param errorList
+     */
+    void saveErrorData(String cspch,List<CxjmgeyzPLMsg> errorList);
 }

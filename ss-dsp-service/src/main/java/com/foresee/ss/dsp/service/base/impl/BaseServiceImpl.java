@@ -1,18 +1,18 @@
 package com.foresee.ss.dsp.service.base.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.foresee.ss.dsp.auto.dto.msg.CxjmgrxxErrorMsg;
 import com.foresee.ss.dsp.constant.ErrorMsg;
 import com.foresee.ss.dsp.service.base.BaseService;
-import com.foresee.ss.dsp.auto.base.dto.BaseDto;
 import com.foresee.ss.dsp.auto.base.mapper.BaseMapper;
 import com.foresee.ss.dsp.auto.base.model.BaseModel;
-import com.foresee.ss.dsp.auto.dto.msg.CxjmgrxxErrorMsg;
 import com.foresee.ss.dsp.auto.model.SfzjCxjmgrcbxx;
 import com.foresee.ss.dsp.auto.model.SfzjCxjmgrjcxx;
-import com.foresee.icap.common.util.StrUtil;
+import com.foresee.ss.dsp.service.cxjm.impl.CxjmxnhjcxxServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +23,15 @@ import java.util.List;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-03 14:15
  */
-public abstract class BaseServiceImpl< T extends BaseModel, Dto extends BaseDto> implements BaseService< T, Dto> {
+public abstract class BaseServiceImpl< T extends BaseModel> implements BaseService<T> {
 
     @Autowired
     private BaseMapper<T> baseMapper;
 
+    private  final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public String checkInsParam(T param) {
+    public String checkParam(T param) {
 
         if (param == null){
             return ErrorMsg.NOTNULL_DATA;
@@ -67,7 +68,7 @@ public abstract class BaseServiceImpl< T extends BaseModel, Dto extends BaseDto>
         List<CxjmgrxxErrorMsg> insertError = new ArrayList<>();
         for (T model : paramList) {
             try {
-                String result = checkInsParam(model);
+                String result = checkParam(model);
                 if(result == null){
                     //子类实现
                     baseMapper.insert(model);
@@ -76,7 +77,7 @@ public abstract class BaseServiceImpl< T extends BaseModel, Dto extends BaseDto>
                     insertError.add(errorMsg);
                 }
             }catch (Exception e){
-                e.printStackTrace();
+                logger.error(e.getMessage());
                 //存储失败, 返回失败数据
                 CxjmgrxxErrorMsg<SfzjCxjmgrjcxx> errorMsg = setErrorMsg("未知错误(请确认序号是否重复!)",model);
                 insertError.add(errorMsg);
@@ -92,26 +93,25 @@ public abstract class BaseServiceImpl< T extends BaseModel, Dto extends BaseDto>
 
 
     @Override
-    public List<CxjmgrxxErrorMsg> checkAndUpdate(List<Dto> dtoList) {
+    public List<CxjmgrxxErrorMsg> checkAndUpdate(List<T> updateList) {
         List<CxjmgrxxErrorMsg> updateError = new ArrayList<>();
-        T t = null;
         int i = 0;
-        for (Dto dto : dtoList) {
+        for (T t : updateList) {
             try {
-                String result = checkUpdateParam(dto);
-                t = setTparam(dto);
+                String result = checkParam(t);
                 if (result == null){
                     i = baseMapper.updateByPrimaryKeySelective(t);
+                    if (i != 1){
+                        CxjmgrxxErrorMsg<SfzjCxjmgrcbxx> errorMsg = setErrorMsg("更新数据不存在",t);
+                        updateError.add(errorMsg);
+                    }
                 }else{
                     CxjmgrxxErrorMsg<SfzjCxjmgrcbxx> errorMsg = setErrorMsg(result,t);
                     updateError.add(errorMsg);
                 }
-                if (i != 1){
-                    CxjmgrxxErrorMsg<SfzjCxjmgrcbxx> errorMsg = setErrorMsg("更新数据不存在",t);
-                    updateError.add(errorMsg);
-                }
+
             }catch (Exception e){
-                e.printStackTrace();
+                logger.error(e.getMessage());
                 CxjmgrxxErrorMsg errorMsg = setErrorMsg("未知错误",t);
                 updateError.add(errorMsg);
             }
@@ -120,75 +120,34 @@ public abstract class BaseServiceImpl< T extends BaseModel, Dto extends BaseDto>
     }
 
 
-    protected  T  setTparam(Dto dto)throws Exception{
-
-        T t = getT();
-
-        t.setXh(dto.getXh());
-        t.setGrbh(dto.getGrbh());
-        t.setXzqhxqDm(dto.getXzqhxqDm());
-        t.setSjlylx(dto.getSjlylx());
-        t.setGrbhSw(dto.getGrbhSw());
-
-        return t;
-    }
-
-    /**
-     * 反射获取泛型类实例
-     * @return
-     * @throws Exception
-     */
-    protected  T getT() throws Exception{
-       ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
-       Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-       Object o = Class.forName(actualTypeArguments[0].getTypeName()).newInstance();
-
-       return (T)o;
-    }
-
-
+//    protected  T  setTparam(T t)throws Exception{
+//
+//        T t = getT();
+//
+//        t.setXh(t.getXh());
+//        t.setGrbh(t.getGrbh());
+//        t.setXzqhxqDm(t.getXzqhxqDm());
+//        t.setSjlylx(t.getSjlylx());
+//        t.setGrbhSw(t.getGrbhSw());
+//
+//        return t;
+//    }
+//
+//    /**
+//     * 反射获取泛型类实例
+//     * @return
+//     * @throws Exception
+//     */
+//    protected  T getT() throws Exception{
+//       ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
+//       Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+//       Object o = Class.forName(actualTypeArguments[0].getTypeName()).newInstance();
+//
+//       return (T)o;
+//    }
 
 
-    protected  String checkUpdateParam(Dto dto){
-        if (dto == null){
-            return ErrorMsg.NOTNULL_DATA;
-        }
 
-        if ( StrUtil.isBlank(dto.getXh()) ){
-            return ErrorMsg.NOTNULL_XH;
-        }
-
-        if ( StrUtil.isBlank(dto.getGrbh()) ){
-            return ErrorMsg.NOTNULL_GRBH;
-        }
-
-        if ( StrUtil.isBlank(dto.getXzqhxqDm()) ){
-            return ErrorMsg.NOTNULL_XZQHXQ_DM;
-        }
-
-        if ( StrUtil.isBlank(dto.getSjlylx()) ){
-            return ErrorMsg.NOTNULL_SJLYLX;
-        }
-
-        if ( StrUtil.isBlank(dto.getGrbhSw()) ){
-            return ErrorMsg.NOTNULL_GRBH_SW;
-        }
-
-
-        if(StrUtil.isBlank(dto.getBgxmMc())){
-            return  ErrorMsg.NOTNULL_BGXM_MX;
-        }
-
-        if(StrUtil.isBlank(dto.getBgqz())){
-            return  ErrorMsg.NOTNULL_BGQZ;
-        }
-
-        if(StrUtil.isBlank(dto.getBghz())){
-            return ErrorMsg.NOTNULL_BGQH;
-        }
-
-        return null;
-    }
 
 
 

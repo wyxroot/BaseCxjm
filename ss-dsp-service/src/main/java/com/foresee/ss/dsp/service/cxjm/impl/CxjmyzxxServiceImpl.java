@@ -56,8 +56,33 @@ public class CxjmyzxxServiceImpl implements CxjmyzxxService {
                setError("101",msg,vo,errorList);
         }
 
-        return null;
+        return errorList;
     }
+
+
+    private void setError(String errorCode, String msg, CxjmyzVO vo, List<CxjmgeyzMsg> errorList) {
+        CxjmgeyzMsg  cxjmgeyzMsg = new CxjmgeyzMsg();
+        cxjmgeyzMsg.setErrorCode(errorCode);
+        cxjmgeyzMsg.setErrorMsg(msg);
+
+        if (vo != null && vo.getInsertGryzmxGrid() != null){
+            cxjmgeyzMsg.setXh(vo.getInsertGryzmxGrid().getXh());
+            cxjmgeyzMsg.setGrbh(vo.getInsertGryzmxGrid().getGrbh());
+
+            cxjmgeyzMsg.setDwbh(vo.getDwjbxx().getDwbh());
+            cxjmgeyzMsg.setSbjbjg_dm(vo.getDwjbxx().getSbjbDm());
+
+            cxjmgeyzMsg.setSfssqQrq(vo.getInsertGryzmxGrid().getSfssqQsrq());
+            cxjmgeyzMsg.setSfssqZzrq(vo.getInsertGryzmxGrid().getSfssqZzrq());
+
+            cxjmgeyzMsg.setXzlxDm(vo.getInsertGryzmxGrid().getXzlxDm());
+            cxjmgeyzMsg.setYjje(vo.getInsertGryzmxGrid().getYjje());
+        }
+
+        errorList.add(cxjmgeyzMsg);
+    }
+
+
 
     private String checkInsert(CxjmyzxxDto insertGryzmxGrid) {
 
@@ -124,7 +149,7 @@ public class CxjmyzxxServiceImpl implements CxjmyzxxService {
             return ErrorMsg.NOTNULL_JLS;
         }
 
-        if ( StrUtil.isBlank(dwjbxx.getSc_rq())){
+        if ( StrUtil.isBlank(dwjbxx.getScRq())){
             return ErrorMsg.NOTNULL_SC_RQ;
         }
 
@@ -137,9 +162,6 @@ public class CxjmyzxxServiceImpl implements CxjmyzxxService {
 
 
 
-    private void setError(String s, String msg, CxjmyzVO vo, List<CxjmgeyzMsg> errorList) {
-
-    }
 
 
 }

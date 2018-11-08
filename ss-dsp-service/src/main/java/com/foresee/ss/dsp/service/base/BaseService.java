@@ -13,28 +13,28 @@ import java.util.List;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-03 14:14
  */
-public interface BaseService<T extends BaseModel,Dto extends BaseDto> {
+public interface BaseService<T> {
 
     /**
      * 效验参数
      * @param param
      * @return
      */
-    String checkInsParam(T  param);
+    String checkParam(T  param);
 
     /**
      * 保存数据
-     * @param paramList  errorResult
+     * @param insertList  errorResult
      * @return
      */
-    List<CxjmgrxxErrorMsg> checkAndSave(List<T> paramList);
+    List<CxjmgrxxErrorMsg> checkAndSave(List<T> insertList);
 
     /**
      * 更新并效验数据
-     * @param dto  errorResult
+     * @param updateList  errorResult
      * @return
      */
-    List<CxjmgrxxErrorMsg> checkAndUpdate(List<Dto> dto);
+    List<CxjmgrxxErrorMsg> checkAndUpdate(List<T> updateList);
 
 
 }

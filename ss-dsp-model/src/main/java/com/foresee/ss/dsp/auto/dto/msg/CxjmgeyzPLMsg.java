@@ -13,7 +13,7 @@ public class CxjmgeyzPLMsg<T> {
     /**
      * 状态码 ‘0’-成功，‘2’-失败
      */
-    private int  returnCode;
+    private String  returnCode;
 
     /**
      * 异常信息
@@ -25,11 +25,11 @@ public class CxjmgeyzPLMsg<T> {
      */
     private T fkxx;
 
-    public int getReturnCode() {
+    public String getReturnCode() {
         return returnCode;
     }
 
-    public void setReturnCode(int returnCode) {
+    public void setReturnCode(String returnCode) {
         this.returnCode = returnCode;
     }
 

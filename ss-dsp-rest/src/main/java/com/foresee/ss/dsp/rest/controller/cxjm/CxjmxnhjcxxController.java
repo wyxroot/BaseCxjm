@@ -1,6 +1,9 @@
 package com.foresee.ss.dsp.rest.controller.cxjm;
 
 import java.util.List;
+
+import com.foresee.icap.common.util.StrUtil;
+import com.foresee.ss.dsp.constant.ErrorMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +37,10 @@ public class CxjmxnhjcxxController {
             return  Response.success(null,null);
         }
 
+        if ( StrUtil.isBlank(cxjmxndwVO.getCspch()) ){
+            return Response.error("001", ErrorMsg.NOTNULL_CSPCH);
+        }
+
         ResultVO resultVO = new ResultVO();
         /**
          * check and save data
@@ -47,7 +54,7 @@ public class CxjmxnhjcxxController {
         /**
          * check and update
          */
-        List<CxjmxnhjccDto> updateDwjbxxGrid = cxjmxndwVO.getUpdateDwjbxxGrid();
+        List<SfzjCxjmxnhjcxx> updateDwjbxxGrid = cxjmxndwVO.getUpdateDwjbxxGrid();
         if(updateDwjbxxGrid != null && updateDwjbxxGrid.size() > 0) {
             List<CxjmxnhjErrorMsg> updateErrList = cxjmxnhjcxxService.checkAndUpdate(updateDwjbxxGrid,resultVO);
             resultVO.setUpdateMsg(updateErrList);

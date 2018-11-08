@@ -19,7 +19,7 @@ import java.util.Date;
  * @create 2018-11-01 14:04
  */
 @Service
-public class CxjmgrcbxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrcbxx, BaseDto> implements CxjmgrcbxxService {
+public class CxjmgrcbxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrcbxx> implements CxjmgrcbxxService {
 
 
     @Override
@@ -80,8 +80,8 @@ public class CxjmgrcbxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrcbxx, BaseD
         errorMsg.setErrorCode(101);
         errorMsg.setXh(model.getXh());
         errorMsg.setGrbh(model.getGrbh());
-        errorMsg.setZjhm(model.getSbjbjgDm());
-        errorMsg.setXm(model.getDwbh());
+        //errorMsg.setZjhm(model.getSbjbjgDm());
+        //errorMsg.setXm(model.getDwbh());
         errorMsg.setFkxx(model);
 
         return errorMsg;

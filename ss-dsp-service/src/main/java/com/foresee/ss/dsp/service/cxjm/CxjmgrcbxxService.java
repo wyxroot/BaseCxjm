@@ -10,7 +10,7 @@ import com.foresee.ss.dsp.service.base.BaseService;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-01 14:04
  */
-public interface CxjmgrcbxxService extends BaseService<SfzjCxjmgrcbxx, BaseDto> {
+public interface CxjmgrcbxxService extends BaseService<SfzjCxjmgrcbxx> {
 
 
 }

@@ -10,13 +10,13 @@ import java.util.List;
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-01 16:07
  */
-public class CxjmxxVO<T,K> implements Serializable {
+public class CxjmxxVO<T> implements Serializable {
 
     private String cspch;
 
     private List<T> insertGrjbxxGrid;
 
-    private List<K> updateGrjbxxGrid;
+    private List<T> updateGrjbxxGrid;
 
 
     public List<T> getInsertGrjbxxGrid() {
@@ -27,11 +27,11 @@ public class CxjmxxVO<T,K> implements Serializable {
         this.insertGrjbxxGrid = insertGrjbxxGrid;
     }
 
-    public List<K> getUpdateGrjbxxGrid() {
+    public List<T> getUpdateGrjbxxGrid() {
         return updateGrjbxxGrid;
     }
 
-    public void setUpdateGrjbxxGrid(List<K> updateGrjbxxGrid) {
+    public void setUpdateGrjbxxGrid(List<T> updateGrjbxxGrid) {
         this.updateGrjbxxGrid = updateGrjbxxGrid;
     }
 

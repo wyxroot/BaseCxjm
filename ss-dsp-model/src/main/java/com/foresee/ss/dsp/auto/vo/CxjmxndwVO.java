@@ -21,6 +21,11 @@ public class CxjmxndwVO implements Serializable {
     private String cspch;
 
     /**
+     * deleteDwjbxxGrid
+     */
+    private List<SfzjCxjmxnhjcxx> deleteDwjbxxGrid;
+
+    /**
      * insertDwjbxxGrid
      */
     private List<SfzjCxjmxnhjcxx> insertDwjbxxGrid;
@@ -28,12 +33,9 @@ public class CxjmxndwVO implements Serializable {
     /**
      * updateDwjbxxGrid
      */
-    private List<CxjmxnhjccDto> updateDwjbxxGrid;
+    private List<SfzjCxjmxnhjcxx> updateDwjbxxGrid;
 
-    /**
-     * deleteDwjbxxGrid
-     */
-    private List<SfzjCxjmxnhjcxx> deleteDwjbxxGrid;
+
 
     public String getCspch() {
         return cspch;
@@ -51,19 +53,19 @@ public class CxjmxndwVO implements Serializable {
         this.insertDwjbxxGrid = insertDwjbxxGrid;
     }
 
-    public List<CxjmxnhjccDto> getUpdateDwjbxxGrid() {
-        return updateDwjbxxGrid;
-    }
-
-    public void setUpdateDwjbxxGrid(List<CxjmxnhjccDto> updateDwjbxxGrid) {
-        this.updateDwjbxxGrid = updateDwjbxxGrid;
-    }
-
     public List<SfzjCxjmxnhjcxx> getDeleteDwjbxxGrid() {
         return deleteDwjbxxGrid;
     }
 
     public void setDeleteDwjbxxGrid(List<SfzjCxjmxnhjcxx> deleteDwjbxxGrid) {
         this.deleteDwjbxxGrid = deleteDwjbxxGrid;
+    }
+
+    public List<SfzjCxjmxnhjcxx> getUpdateDwjbxxGrid() {
+        return updateDwjbxxGrid;
+    }
+
+    public void setUpdateDwjbxxGrid(List<SfzjCxjmxnhjcxx> updateDwjbxxGrid) {
+        this.updateDwjbxxGrid = updateDwjbxxGrid;
     }
 }

@@ -8,6 +8,8 @@ import com.foresee.ss.dsp.auto.dto.msg.CxjmgeyzPLMsg;
 import com.foresee.ss.dsp.auto.model.SfzjCxjmyzxx;
 import com.foresee.ss.dsp.auto.vo.CxjmyzPLVO;
 import com.foresee.icap.common.util.StrUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Transient;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ import java.util.List;
 @Service
 public class CxjmyzxxPLServiceImpl implements CxjmyzxxPLService {
 
+    private static final Logger logger = LoggerFactory.getLogger(CxjmyzxxPLServiceImpl.class);
+
     @Autowired
     private SfzjCxjmyzxxMapper cxjmyzxxMapper;
 
@@ -33,46 +37,76 @@ public class CxjmyzxxPLServiceImpl implements CxjmyzxxPLService {
     public List<CxjmgeyzPLMsg> checkAndSave(CxjmyzPLVO<SfzjCxjmyzxx> cxjmyzPLVO) {
 
         List<CxjmgeyzPLMsg> errorList = new ArrayList<>();
+        List<SfzjCxjmyzxx>  insertList = new ArrayList<>();
 
         if ( StrUtil.isBlank(cxjmyzPLVO.getCspch()) ){
-             setError(101, ErrorMsg.NOTNULL_CSPCH,null,null);
+             setError("101", ErrorMsg.NOTNULL_CSPCH,null,null);
              return errorList;
         }
 
-        List<SfzjCxjmyzxx> insertList = cxjmyzPLVO.getInsertGryzmxGrid();
-        if(insertList == null || insertList.size() == 0 ){
-            setError(101,ErrorMsg.NOTNULL_INS_DATA,null,null);
+        List<SfzjCxjmyzxx> insertGryzmxGrid = cxjmyzPLVO.getInsertGryzmxGrid();
+        if(insertGryzmxGrid == null || insertGryzmxGrid.size() == 0 ){
+            setError("101",ErrorMsg.NOTNULL_INS_DATA,null,null);
             return errorList;
         }
 
-        List<CbxxProcdure> cbxxProList = new ArrayList<>();
-        for (SfzjCxjmyzxx sfzjCxjmyzxx : insertList) {
-            try {
-                String msg = checkYzxxParam(sfzjCxjmyzxx);
-                if (msg == null){
-                    //效验通过, 保存数据
-                    sfzjCxjmyzxx.setDrSj(new Date());
-                    //cxjmyzxxMapper.insert(sfzjCxjmyzxx);
 
-                    CbxxProcdure cbxxProcdure = new CbxxProcdure();
-                    //保存数据并调用存储过程
-                    cxjmyzxxMapper.insert(sfzjCxjmyzxx);
-                    cxjmyzxxMapper.procedure(sfzjCxjmyzxx);
-                    cbxxProcdure.setCode(sfzjCxjmyzxx.getCode());
-                    cbxxProcdure.setMsg(sfzjCxjmyzxx.getMsg());
-                    cbxxProList.add(cbxxProcdure);
-                }else{
-                    setError(101,msg,errorList,sfzjCxjmyzxx);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-                setError(199,ErrorMsg.UNKNOWN_ERROR,errorList,sfzjCxjmyzxx);
+        for (SfzjCxjmyzxx sfzjCxjmyzxx : insertGryzmxGrid) {
+            String msg = checkYzxxParam(sfzjCxjmyzxx);
+            if (msg != null){
+                /*//效验通过, 保存数据
+                sfzjCxjmyzxx.setDrSj(new Date());
+                //cxjmyzxxMapper.insert(sfzjCxjmyzxx);
+
+                CbxxProcdure cbxxProcdure = new CbxxProcdure();
+                //保存数据并调用存储过程
+                cxjmyzxxMapper.insert(sfzjCxjmyzxx);
+                cxjmyzxxMapper.procedure(sfzjCxjmyzxx);
+
+                cbxxProcdure.setCode(sfzjCxjmyzxx.getCode());
+                cbxxProcdure.setMsg(sfzjCxjmyzxx.getMsg());
+                cbxxProList.add(cbxxProcdure);*/
+
+                //check fail
+                setError("101",msg,errorList,sfzjCxjmyzxx);
+            }else {
+                insertList.add(sfzjCxjmyzxx);
             }
+
+
         }
-        printResult(cbxxProList);
+        //printResult(cbxxProList);
+
+        try {
+            //batchInsert
+            cxjmyzxxMapper.batchInsert(insertList);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            addErrorDataForInsData(insertGryzmxGrid,errorList);
+        }
         return errorList;
 
     }
+
+    @Override
+    public void saveErrorData(String cspch, List<CxjmgeyzPLMsg> errorList) {
+
+    }
+
+
+
+    private void addErrorDataForInsData(List<SfzjCxjmyzxx> insertList, List<CxjmgeyzPLMsg> errorList) {
+
+        for (SfzjCxjmyzxx sfzjCxjmyzxx : insertList) {
+            CxjmgeyzPLMsg cxjmgeyzPLMsg = new CxjmgeyzPLMsg();
+            cxjmgeyzPLMsg.setReturnCode("999");
+            cxjmgeyzPLMsg.setReturnMsg("未知错误");
+            cxjmgeyzPLMsg.setFkxx(sfzjCxjmyzxx);
+            errorList.add(cxjmgeyzPLMsg);
+        }
+    }
+
+
 
     /**
      * print result
@@ -161,12 +195,13 @@ public class CxjmyzxxPLServiceImpl implements CxjmyzxxPLService {
             return ErrorMsg.NOTNULL_SJLYLX;
         }
 
+        sfzjCxjmyzxx.setDrSj(new Date());
         return null;
     }
 
 
 
-    private void setError(int errCode, String msg, List<CxjmgeyzPLMsg> errorList, SfzjCxjmyzxx errorData) {
+    private void setError(String errCode, String msg, List<CxjmgeyzPLMsg> errorList, SfzjCxjmyzxx errorData) {
         CxjmgeyzPLMsg<SfzjCxjmyzxx> cxjmgeyzPLMsg = new CxjmgeyzPLMsg();
         cxjmgeyzPLMsg.setReturnCode(errCode);
         cxjmgeyzPLMsg.setReturnMsg(msg);

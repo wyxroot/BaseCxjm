@@ -19,7 +19,7 @@ import java.util.Date;
  * @create 2018-11-03 11:29
  */
 @Service
-public class CxjmgrjcxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrjcxx, BaseDto> implements CxjmgrjcxxService {
+public class CxjmgrjcxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrjcxx> implements CxjmgrjcxxService {
 
 
     @Override
