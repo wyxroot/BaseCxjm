@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<!-- 定义下面的引用名 -->
+	<Properties>
+		<property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%X{requestId}] %-5level %logger{36}.%M:%L - %msg%n</property>
+		<property name="basePath">${sys:log.rootPath}/logs</property>
+		<property name="fileName">${basePath}/dsp.log</property>
+        <property name="rollingFileName">${basePath}/dsp-%d{yyyy-MM-dd}.log</property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${log_pattern}" />
+		</Console>
+		<RollingFile name="Rollingfile" filename="${fileName}"
+			filePattern="${rollingFileName}" append="true">
+			<PatternLayout>
+				<Pattern>${log_pattern}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<!-- 各应用按实际情况自行定义相关类的输出级别 -->       
+		<AsyncLogger name="com.foresee" level="DEBUG" />
+		<AsyncLogger name="com.foresee.fcap.common" level="INFO" />
+		<AsyncLogger name="com.ibatis" level="DEBUG" />
+		<AsyncLogger name="java.sql" level="DEBUG" />
+		<AsyncRoot level="INFO" includeLocation="true">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="Rollingfile" />
+		</AsyncRoot>
+	</Loggers>
+</Configuration>
