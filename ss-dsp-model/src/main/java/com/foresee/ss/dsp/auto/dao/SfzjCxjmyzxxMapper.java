@@ -1,6 +1,8 @@
 package com.foresee.ss.dsp.auto.dao;
 
 import com.foresee.ss.dsp.auto.dto.CbxxProcdure;
+import com.foresee.ss.dsp.auto.dto.CxjmPLCriteriaDto;
+import com.foresee.ss.dsp.auto.dto.msg.CxjmPLResultMsg;
 import com.foresee.ss.dsp.auto.model.SfzjCxjmyzxx;
 
 import java.util.List;
@@ -50,13 +52,31 @@ public interface SfzjCxjmyzxxMapper {
 
     /**
      * 保存数据并调用存储过程
+     *
      * @param sfzjCxjmyzxx
      */
     void procedure(SfzjCxjmyzxx sfzjCxjmyzxx);
 
     /**
      * 批量新增数据
+     *
      * @param insertList
      */
     void batchInsert(List<SfzjCxjmyzxx> insertList);
+
+    /**
+     * 根据批次号查询数据
+     *
+     * @param cspch
+     * @return
+     */
+    List<CxjmPLResultMsg> findByCspch(String cspch);
+
+    /**
+     * 根据条件批量查询保存数据
+     *
+     * @param criteriaDto
+     * @return
+     */
+    List<CxjmPLResultMsg> findByCriteria(CxjmPLCriteriaDto criteriaDto);
 }

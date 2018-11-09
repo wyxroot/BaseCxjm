@@ -6,7 +6,8 @@ import com.foresee.ss.dsp.service.base.BaseService;
 
 /**
  * 描述:
- *  城乡居民个人基础信息
+ * 城乡居民个人基础信息
+ *
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-01 14:04
  */

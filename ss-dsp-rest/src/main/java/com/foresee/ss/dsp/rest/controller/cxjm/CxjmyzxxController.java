@@ -27,13 +27,13 @@ public class CxjmyzxxController {
     private CxjmyzxxService cxjmyzxxService;
 
     @PostMapping("/saveOrUpdate")
-    public Response saveOrUpdate(@RequestBody List<CxjmyzVO> cxjmyzVO){
-        if (cxjmyzVO == null || cxjmyzVO.size() == 0){
+    public Response saveOrUpdate(@RequestBody List<CxjmyzVO> cxjmyzVO) {
+        if (cxjmyzVO == null || cxjmyzVO.size() == 0) {
             return null;
         }
 
         List<CxjmgeyzMsg> errorList = cxjmyzxxService.checkAndSave(cxjmyzVO);
 
-        return  Response.success(null,errorList);
+        return Response.success(null, errorList);
     }
 }

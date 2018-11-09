@@ -32,12 +32,12 @@ public class CxjmxnhjcxxController {
     private CxjmxnhjcxxService cxjmxnhjcxxService;
 
     @PostMapping("/saveOrUpdate")
-    public Response saveOrUpdate(@RequestBody CxjmxndwVO cxjmxndwVO){
-        if (cxjmxndwVO == null){
-            return  Response.success(null,null);
+    public Response saveOrUpdate(@RequestBody CxjmxndwVO cxjmxndwVO) {
+        if (cxjmxndwVO == null) {
+            return Response.success(null, null);
         }
 
-        if ( StrUtil.isBlank(cxjmxndwVO.getCspch()) ){
+        if (StrUtil.isBlank(cxjmxndwVO.getCspch())) {
             return Response.error("001", ErrorMsg.NOTNULL_CSPCH);
         }
 
@@ -46,8 +46,8 @@ public class CxjmxnhjcxxController {
          * check and save data
          */
         List<SfzjCxjmxnhjcxx> insertDwjbxxGrid = cxjmxndwVO.getInsertDwjbxxGrid();
-        if(insertDwjbxxGrid != null && insertDwjbxxGrid.size() > 0) {
-            List<CxjmxnhjErrorMsg> insertErrList = cxjmxnhjcxxService.checkAndSave(insertDwjbxxGrid,resultVO);
+        if (insertDwjbxxGrid != null && insertDwjbxxGrid.size() > 0) {
+            List<CxjmxnhjErrorMsg> insertErrList = cxjmxnhjcxxService.checkAndSave(insertDwjbxxGrid, resultVO);
             resultVO.setInsertMsg(insertErrList);
         }
 
@@ -55,8 +55,8 @@ public class CxjmxnhjcxxController {
          * check and update
          */
         List<SfzjCxjmxnhjcxx> updateDwjbxxGrid = cxjmxndwVO.getUpdateDwjbxxGrid();
-        if(updateDwjbxxGrid != null && updateDwjbxxGrid.size() > 0) {
-            List<CxjmxnhjErrorMsg> updateErrList = cxjmxnhjcxxService.checkAndUpdate(updateDwjbxxGrid,resultVO);
+        if (updateDwjbxxGrid != null && updateDwjbxxGrid.size() > 0) {
+            List<CxjmxnhjErrorMsg> updateErrList = cxjmxnhjcxxService.checkAndUpdate(updateDwjbxxGrid, resultVO);
             resultVO.setUpdateMsg(updateErrList);
         }
 
@@ -64,12 +64,12 @@ public class CxjmxnhjcxxController {
          * check and delete
          */
         List<SfzjCxjmxnhjcxx> deleteDwjbxxGrid = cxjmxndwVO.getDeleteDwjbxxGrid();
-        if(deleteDwjbxxGrid != null && deleteDwjbxxGrid.size() > 0) {
-            List<CxjmxnhjErrorMsg> deleteErrList = cxjmxnhjcxxService.checkAndDelete(deleteDwjbxxGrid,resultVO);
+        if (deleteDwjbxxGrid != null && deleteDwjbxxGrid.size() > 0) {
+            List<CxjmxnhjErrorMsg> deleteErrList = cxjmxnhjcxxService.checkAndDelete(deleteDwjbxxGrid, resultVO);
             resultVO.setDeleteMsg(deleteErrList);
         }
 
-        return Response.success(null,resultVO);
+        return Response.success(null, resultVO);
 
     }
 }

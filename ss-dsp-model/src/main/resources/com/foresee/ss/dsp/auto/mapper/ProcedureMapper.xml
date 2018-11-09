@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.foresee.ss.dsp.auto.dao.ProcedureMapper">
 
-  <!--<resultMap type="java.util.HashMap" id="resultMap">
+    <!--<resultMap type="java.util.HashMap" id="resultMap">
 
-    <result column="V_RETURNCODE" property="k1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="V_RETURNCODE" property="k1" javaType="java.lang.String" jdbcType="VARCHAR" />
 
-    <result column="V_RETURNMSG" property="k2" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <result column="V_RETURNMSG" property="k2" javaType="java.lang.String" jdbcType="VARCHAR"/>
 
-  </resultMap>-->
-
-
-  <select id="save" parameterType="com.foresee.ss.dsp.auto.model.SfzjCxjmgrcbxx" statementType="CALLABLE">
-
-      { call P_SFZJ_CXJMGRCBXX ('111',
-                        #{grbhSw,mode=IN,jdbcType=VARCHAR},
-                        #{grbh,mode=IN,jdbcType=VARCHAR},
-                        #{cbrytslb,mode=IN,jdbcType=VARCHAR},
-                        #{dwbhSw,mode=IN,jdbcType=VARCHAR},
-                        #{sbjbjgDm,mode=IN,jdbcType=VARCHAR},
-                        #{sjlylx,mode=OUT,jdbcType=VARCHAR},
-                        #{rycbbglxDm,mode=OUT,jdbcType=VARCHAR})
-      }
+    </resultMap>-->
 
 
-  </select>
+    <select id="save" parameterType="com.foresee.ss.dsp.auto.model.SfzjCxjmgrcbxx" statementType="CALLABLE">
+
+        { call P_SFZJ_CXJMGRCBXX ('111',
+        #{grbhSw,mode=IN,jdbcType=VARCHAR},
+        #{grbh,mode=IN,jdbcType=VARCHAR},
+        #{cbrytslb,mode=IN,jdbcType=VARCHAR},
+        #{dwbhSw,mode=IN,jdbcType=VARCHAR},
+        #{sbjbjgDm,mode=IN,jdbcType=VARCHAR},
+        #{sjlylx,mode=OUT,jdbcType=VARCHAR},
+        #{rycbbglxDm,mode=OUT,jdbcType=VARCHAR})
+        }
+
+
+    </select>
 </mapper>

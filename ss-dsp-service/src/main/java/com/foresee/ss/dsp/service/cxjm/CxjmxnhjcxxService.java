@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 描述:
- *  城乡居民虚拟户信息交换服务层接口
+ * 城乡居民虚拟户信息交换服务层接口
  *
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-03 19:23
@@ -18,6 +18,7 @@ public interface CxjmxnhjcxxService {
 
     /**
      * 效验并保存数据, resultVO 用于封装错误数据的结果集
+     *
      * @param insertDwjbxxGrid
      * @param resultVO
      */
@@ -26,6 +27,7 @@ public interface CxjmxnhjcxxService {
 
     /**
      * 效验并更新数据, resultVO 用于封装错误数据的结果集
+     *
      * @param updateDwjbxxGrid
      * @param resultVO
      */
@@ -33,6 +35,7 @@ public interface CxjmxnhjcxxService {
 
     /**
      * 效验并删除数据, resultVO 用于封装错误数据的结果集
+     *
      * @param deleteDwjbxxGrid
      * @param resultVO
      */

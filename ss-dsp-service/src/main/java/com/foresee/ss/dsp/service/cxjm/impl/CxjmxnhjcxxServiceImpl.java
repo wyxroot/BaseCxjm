@@ -39,16 +39,16 @@ public class CxjmxnhjcxxServiceImpl implements CxjmxnhjcxxService {
 
             String msg = checkData(sfzjCxjmxnhjcxx);
             try {
-                if (msg == null){
+                if (msg == null) {
                     //效验通过
                     sfzjCxjmxnhjcxx.setDrSj(new Date());
                     cxjmxnhjcxxMapper.insert(sfzjCxjmxnhjcxx);
-                }else {
-                    setError("999",msg,insertErrList,sfzjCxjmxnhjcxx);
+                } else {
+                    setError("199", msg, insertErrList, sfzjCxjmxnhjcxx);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage());
-                setError("999","未知错误",insertErrList,sfzjCxjmxnhjcxx);
+                setError("199", "未知错误", insertErrList, sfzjCxjmxnhjcxx);
             }
 
         }
@@ -64,24 +64,23 @@ public class CxjmxnhjcxxServiceImpl implements CxjmxnhjcxxService {
             String msg = checkData(cxjmxnhjcc);
             int i;
             try {
-                if (msg == null){
+                if (msg == null) {
                     //效验通过
                     i = cxjmxnhjcxxMapper.updateByPrimaryKeySelective(cxjmxnhjcc);
-                    if (i == 0){
-                        setError("999","找不到要更新数据的 xh !!!",updateErrList,cxjmxnhjcc);
+                    if (i == 0) {
+                        setError("199", "找不到要更新数据的 xh !!!", updateErrList, cxjmxnhjcc);
                     }
-                }else {
-                    setError("999",msg,updateErrList,cxjmxnhjcc);
+                } else {
+                    setError("199", msg, updateErrList, cxjmxnhjcc);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage());
-                setError("999","未知错误",updateErrList,cxjmxnhjcc);
+                setError("199", "未知错误", updateErrList, cxjmxnhjcc);
             }
 
         }
         return updateErrList;
     }
-
 
 
     @Override
@@ -93,26 +92,24 @@ public class CxjmxnhjcxxServiceImpl implements CxjmxnhjcxxService {
             int i = 0;
 
             try {
-                if (msg == null){
+                if (msg == null) {
                     //效验通过
                     i = cxjmxnhjcxxMapper.deleteByPrimaryKey(deletejcxx.getXh());
-                }else {
-                    setError("101",msg,deleteErrList,deletejcxx);
+                } else {
+                    setError("101", msg, deleteErrList, deletejcxx);
                 }
 
-                if ( i == 0){
-                    setError("101",ErrorMsg.NOTFIND_DELETE_DATA,deleteErrList,deletejcxx);
+                if (i == 0) {
+                    setError("101", ErrorMsg.NOTFIND_DELETE_DATA, deleteErrList, deletejcxx);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage());
-                setError("199",ErrorMsg.UNKNOWN_ERROR,deleteErrList,deletejcxx);
+                setError("199", ErrorMsg.UNKNOWN_ERROR, deleteErrList, deletejcxx);
             }
 
         }
         return deleteErrList;
     }
-
-
 
 
 //    private String checkUpdateData(CxjmxnhjccDto cxjmxnhjccDto) {
@@ -152,27 +149,27 @@ public class CxjmxnhjcxxServiceImpl implements CxjmxnhjcxxService {
 
         checkDeleteData(sfzjCxjmxnhjcxx);
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwmc())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwmc())) {
             return ErrorMsg.NOTNULL_DWMC;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getShxydm())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getShxydm())) {
             return ErrorMsg.NOTNULL_SHXYDM;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getZzjgDm())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getZzjgDm())) {
             return ErrorMsg.NOTNULL_ZZJG_DM;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getSbjbjgDm())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getSbjbjgDm())) {
             return ErrorMsg.NOTNULL_SBJBJG_DM;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getSbtcjcDm())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getSbtcjcDm())) {
             return ErrorMsg.NOTNULL_SBTCJC_DM;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getXzqhxqDm())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getXzqhxqDm())) {
             return ErrorMsg.NOTNULL_XZQHXQ_DM;
         }
 
@@ -181,33 +178,32 @@ public class CxjmxnhjcxxServiceImpl implements CxjmxnhjcxxService {
 
     private String checkDeleteData(SfzjCxjmxnhjcxx sfzjCxjmxnhjcxx) {
 
-        if ( sfzjCxjmxnhjcxx == null){
+        if (sfzjCxjmxnhjcxx == null) {
             return "数据为空";
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getXh())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getXh())) {
             return ErrorMsg.NOTNULL_XH;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwbh())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwbh())) {
             return ErrorMsg.NOTNULL_DWBH;
         }
 
-        if ( StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwbhSw())){
+        if (StrUtil.isBlank(sfzjCxjmxnhjcxx.getDwbhSw())) {
             return ErrorMsg.NOTNULL_DWBH_SW;
         }
 
-         return null;
+        return null;
     }
 
 
-
-    private void setError(String  errCode, String msg, List<CxjmxnhjErrorMsg> errorList, SfzjCxjmxnhjcxx sfzjCxjmxnhjcxx) {
+    private void setError(String errCode, String msg, List<CxjmxnhjErrorMsg> errorList, SfzjCxjmxnhjcxx sfzjCxjmxnhjcxx) {
         CxjmxnhjErrorMsg<SfzjCxjmxnhjcxx> errMsg = new CxjmxnhjErrorMsg();
         errMsg.setErrorCode(errCode);
         errMsg.setErrorMsg(msg);
 
-        if ( sfzjCxjmxnhjcxx != null){
+        if (sfzjCxjmxnhjcxx != null) {
             errMsg.setXh(sfzjCxjmxnhjcxx.getXh());
             errMsg.setDwbh(sfzjCxjmxnhjcxx.getDwbh());
             errMsg.setDwmc(sfzjCxjmxnhjcxx.getDwmc());

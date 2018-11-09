@@ -27,7 +27,7 @@ public class CxjmgrjcxxController extends BaseController<SfzjCxjmgrjcxx> {
     private CxjmgrjcxxService cxjmgrjcxxService;
 
     @PostMapping("/saveOrUpdate")
-    public Response saveOrUpdate(@RequestBody CxjmxxVO<SfzjCxjmgrjcxx> cxjmgrcbxxVO){
-       return super.saveOrUpdate(cxjmgrcbxxVO);
+    public Response saveOrUpdate(@RequestBody CxjmxxVO<SfzjCxjmgrjcxx> cxjmgrcbxxVO) {
+        return super.saveOrUpdate(cxjmgrcbxxVO);
     }
 }

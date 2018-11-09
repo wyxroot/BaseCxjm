@@ -33,9 +33,9 @@ public class CxjmyzxxPLController {
     private CxjmyzxxPLService cxjmyzxxPLService;
 
     @PostMapping("/saveOrUpdate")
-    public Response saveOrUpdate(@RequestBody CxjmyzPLVO<SfzjCxjmyzxx> cxjmyzPLVO){
-        if (cxjmyzPLVO == null){
-            return new Response("999","无数据");
+    public Response saveOrUpdate(@RequestBody CxjmyzPLVO<SfzjCxjmyzxx> cxjmyzPLVO) {
+        if (cxjmyzPLVO == null) {
+            return new Response("999", "无数据");
         }
 
         ResultVO<CxjmgeyzPLMsg> failData = new ResultVO<>();
@@ -47,9 +47,9 @@ public class CxjmyzxxPLController {
         //先留着返回,方便查看失败数据, 后期删除
         failData.setInsertMsg(errorList);
 
-        cxjmyzxxPLService.saveErrorData(cxjmyzPLVO.getCspch(),errorList);
+        cxjmyzxxPLService.saveErrorData(errorList);
 
-        return  Response.success(null,failData.getInsertMsg());
+        return Response.success(null, failData.getInsertMsg());
     }
 }
 

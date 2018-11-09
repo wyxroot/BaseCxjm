@@ -24,31 +24,31 @@ public class CxjmgrjcxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrjcxx> imple
 
     @Override
     public String checkMyParam(SfzjCxjmgrjcxx param) {
-        if ( StrUtil.isBlank(param.getShbzh()) ){
+        if (StrUtil.isBlank(param.getShbzh())) {
             return ErrorMsg.NOTNULL_SHBZH;
         }
 
-        if ( StrUtil.isBlank(param.getZjlx()) ){
+        if (StrUtil.isBlank(param.getZjlx())) {
             return ErrorMsg.NOTNULL_ZJLX;
         }
 
-        if ( StrUtil.isBlank(param.getZjhm()) ){
+        if (StrUtil.isBlank(param.getZjhm())) {
             return ErrorMsg.NOTNULL_ZJHM;
         }
 
-        if ( StrUtil.isBlank(param.getXm()) ){
+        if (StrUtil.isBlank(param.getXm())) {
             return ErrorMsg.NOTNULL_XM;
         }
 
-        if ( StrUtil.isBlank(param.getXb()) ){
+        if (StrUtil.isBlank(param.getXb())) {
             return ErrorMsg.NOTNULL_XB;
         }
 
-        if ( StrUtil.isBlank(param.getGjdqDm()) ){
+        if (StrUtil.isBlank(param.getGjdqDm())) {
             return ErrorMsg.NOTNULL_GJDQ_DM;
         }
 
-        if ( StrUtil.isBlank(param.getHjlxDm()) ){
+        if (StrUtil.isBlank(param.getHjlxDm())) {
             return ErrorMsg.NOTNULL_HJLX_DM;
         }
 
@@ -57,13 +57,13 @@ public class CxjmgrjcxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrjcxx> imple
         param.setDrSj(new Date());
         //读取结果类型
         param.setDqjglxDm("0");
-        return  null;
+        return null;
     }
 
     @Override
     public CxjmgrxxErrorMsg setErrorMsg(String result, SfzjCxjmgrjcxx model) {
         if (model == null) {
-            return  null;
+            return null;
         }
 
         CxjmgrxxErrorMsg errorMsg = new CxjmgrxxErrorMsg();

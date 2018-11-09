@@ -13,7 +13,8 @@ import com.foresee.ss.dsp.service.cxjm.CxjmgrcbxxService;
 
 /**
  * 描述:
- *  城乡居民个人参保信息
+ * 城乡居民个人参保信息
+ *
  * @author liuqiang@foresee.com.cn
  * @create 2018-11-01 9:20
  */
@@ -25,7 +26,7 @@ public class CxjmgrcbxxController extends BaseController<SfzjCxjmgrcbxx> {
     private CxjmgrcbxxService cxjmgrcbxxService;
 
     @PostMapping("/saveOrUpdate")
-    public Response insert(@RequestBody CxjmxxVO<SfzjCxjmgrcbxx> cxjmgrcbxxVO){
-          return super.saveOrUpdate(cxjmgrcbxxVO);
+    public Response insert(@RequestBody CxjmxxVO<SfzjCxjmgrcbxx> cxjmgrcbxxVO) {
+        return super.saveOrUpdate(cxjmgrcbxxVO);
     }
 }

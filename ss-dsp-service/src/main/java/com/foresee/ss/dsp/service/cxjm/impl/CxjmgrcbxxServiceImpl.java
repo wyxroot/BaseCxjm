@@ -25,35 +25,35 @@ public class CxjmgrcbxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrcbxx> imple
     @Override
     public String checkMyParam(SfzjCxjmgrcbxx param) {
 
-        if ( StrUtil.isBlank(param.getXzlxDm()) ){
+        if (StrUtil.isBlank(param.getXzlxDm())) {
             return ErrorMsg.NOTNULL_XZLX_DM;
         }
 
-        if ( StrUtil.isBlank(param.getTcqbmDm()) ){
+        if (StrUtil.isBlank(param.getTcqbmDm())) {
             return ErrorMsg.NOTNULL_TCQBM_DM;
         }
 
-        if ( StrUtil.isBlank(param.getSbjbjgDm()) ){
+        if (StrUtil.isBlank(param.getSbjbjgDm())) {
             return ErrorMsg.NOTNULL_SBJBJG_DM;
         }
 
-        if ( StrUtil.isBlank(param.getDwbh()) ){
+        if (StrUtil.isBlank(param.getDwbh())) {
             return ErrorMsg.NOTNULL_DWBH;
         }
 
-        if ( StrUtil.isBlank(param.getDwbhSw()) ){
+        if (StrUtil.isBlank(param.getDwbhSw())) {
             return ErrorMsg.NOTNULL_DWBH_SW;
         }
 
-        if ( StrUtil.isBlank(param.getXzjdDm()) ){
+        if (StrUtil.isBlank(param.getXzjdDm())) {
             return ErrorMsg.NOTNULL_XZJD_DM;
         }
 
-        if ( StrUtil.isBlank(param.getSqcbhDm()) ){
+        if (StrUtil.isBlank(param.getSqcbhDm())) {
             return ErrorMsg.NOTNULL_SQCBH_DM;
         }
 
-        if ( StrUtil.isBlank(param.getRycbbglxDm())){
+        if (StrUtil.isBlank(param.getRycbbglxDm())) {
             return ErrorMsg.NOTNULL_RYCBBGLX_DM;
         }
 
@@ -66,13 +66,13 @@ public class CxjmgrcbxxServiceImpl extends BaseServiceImpl<SfzjCxjmgrcbxx> imple
         param.setRycbbglxDm("1");
 
 
-        return  null;
+        return null;
     }
 
     @Override
     public CxjmgrxxErrorMsg setErrorMsg(String result, SfzjCxjmgrcbxx model) {
         if (model == null) {
-            return  null;
+            return null;
         }
 
         CxjmgrxxErrorMsg errorMsg = new CxjmgrxxErrorMsg();
