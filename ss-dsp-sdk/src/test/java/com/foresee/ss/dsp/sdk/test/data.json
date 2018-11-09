@@ -1,0 +1,35 @@
+{
+	"head": 	
+	{"requestId":"11111111","errorCode":"0","timestamp":1541643934313,"time":1955,"gtime":0,"error":false,"success":true,"api":"v1/batch/demo/saveOrUpdate"},"body":
+{
+	"cspch":"10",
+    "gryzmx":{
+		"jls":"2",
+		"scRq":"2018-10-18"
+	},
+	"insertGryzmxGrid":[
+	{
+		"xh":"%s",
+		"sbYzXh":"440608",
+		"sbYzmxXh":"900871",
+		"sbjbjgDm":"无",
+		"dwbh":"9777",
+		"dwbhSw":"2123123",
+		"grbh":"1234452342",
+		"zjhm":"420223123432423",
+		"xzlxDm":"一级",
+		"yjje":"5000",
+		"sfssqQsrq":"2018-01-10",
+		"sfssqZzrq":"2019-01-10",
+		"jkQx":"2019-01-10",
+		"yhhbDm":"1",
+		"yhZhkhm":"ccc",
+		"yhZh":"23123",
+		"zhbh":"243280934902",
+		"qyys":"无",
+		"sjlylx":"互联网"
+	}
+      ]
+  
+}
+}
