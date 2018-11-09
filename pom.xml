@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.foresee.ss</groupId>
 	<artifactId>ss-dsp</artifactId>
@@ -8,28 +9,57 @@
 	<url>http://maven.apache.org</url>
 	<description>???</description>
 	<packaging>pom</packaging>
-  <parent>
-    <groupId>com.foresee.icap</groupId>
-    <artifactId>icap-parent</artifactId>
-    <version>0.0.1</version>
-  </parent>
+	
+	<parent>
+			<groupId>com.foresee.icap</groupId>
+			<artifactId>icap-parent</artifactId>
+			<version>0.1-SNAPSHOT</version>
+	</parent>
+	
+    <properties>
+        <project.version>0.0.1</project.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+    </properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.foresee.ss</groupId>
+				<artifactId>ss-dsp-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.foresee.ss</groupId>
+				<artifactId>ss-dsp-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.foresee.ss</groupId>
+				<artifactId>ss-dsp-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.foresee.icap</groupId>
-				<artifactId>icap-framework-starter-all</artifactId>
-				<version>0.0.1</version>
-			</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.foresee.icap</groupId>
+			<artifactId>icap-framework-starter-all</artifactId>
+		</dependency>
 	</dependencies>
 
-  <modules>
-    <module>ss-dsp-model</module>
-    <module>ss-dsp-service</module>
-    <module>ss-dsp-rest</module>
-    <module>ss-dsp-api</module>
-  </modules>
+	<modules>
+		<module>ss-dsp-model</module>
+		<module>ss-dsp-service</module>
+		<module>ss-dsp-rest</module>
+		<module>ss-dsp-api</module>
+		<module>ss-dsp-sdk</module>
+	</modules>
 </project>

@@ -6,7 +6,6 @@
 	<url>http://maven.apache.org</url>
 
     <description>API服务层</description>
-    <version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<parent>
